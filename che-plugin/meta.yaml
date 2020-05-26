@@ -1,0 +1,19 @@
+apiVersion: v2
+publisher: prince781
+name: vala-lang
+version: 1.0.2
+type: VS Code extension
+displayName: Vala language support
+title: Vale
+description: Vala language support
+icon: https://www.eclipse.org/che/images/logo-eclipseche.svg
+repository: https://github.com/Prince781/vala-vscode
+category: Other
+firstPublicationDate: "2020-05-26"
+spec:
+  containers:
+    - image: "quay.io/sunix/vala-language-server"
+      name: "vscode-valalang"
+      memoryLimit: "512Mi"
+  extensions:
+    - https://github.com/sunix/vala-vscode/releases/download/1.0.2/prince781.vala-1.0.2.vsix
