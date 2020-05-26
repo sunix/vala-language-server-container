@@ -1,6 +1,6 @@
-FROM registry.fedoraproject.org/fedora-minimal:32
+FROM fedora:32
 
-RUN microdnf -y install 'dnf-command(copr)' && \
+RUN dnf -y install 'dnf-command(copr)' && \
     dnf -y copr enable prince781/vala-language-server && \
-    microdnf -y install vala-language-server && \
-    microdnf clean all
+    dnf -y install vala-language-server && \
+    dnf clean all
