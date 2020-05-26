@@ -15,5 +15,6 @@ spec:
     - image: "quay.io/sunix/vala-language-server"
       name: "vscode-valalang"
       memoryLimit: "512Mi"
+      command: ['/remote-endpoint/plugin-remote-endpoint']
   extensions:
     - https://github.com/sunix/vala-vscode/releases/download/1.0.2/prince781.vala-1.0.2.vsix
