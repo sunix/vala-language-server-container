@@ -11,7 +11,7 @@ projects:
     source:
       location: 'https://github.com/egee-irl/vibbles.git'
       type: git
-      branch: refactor
+      branch: make
 
 
 components:
