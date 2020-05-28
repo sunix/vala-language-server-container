@@ -1,0 +1,57 @@
+apiVersion: 1.0.0
+metadata:
+  generateName: vibbles-vala-
+attributes:
+  persistVolumes: 'false'
+
+
+projects:
+
+- name: vibbles
+    source:
+      location: 'https://github.com/egee-irl/vibbles.git'
+      type: git
+      branch: refactor
+
+
+components:
+
+- mountSources: true
+    endpoints:
+      - name: 5000-tcp
+        port: 5000
+    command:
+      - sleep
+      - infinity
+    memoryLimit: 512Mi
+    type: dockerimage
+    image: quay.io/sunix/broadwayd
+    alias: broadwayd
+
+- type: chePlugin
+    reference: >-
+      https://github.com/sunix/vala-language-server-container/raw/master/che-plugin/meta.yaml
+    alias: valalang
+
+
+commands:
+
+  - name: make
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/vibbles'
+        type: exec
+        command: make
+        component: valalang
+
+  - name: start broadwayd
+    actions:
+      - type: exec
+        command: broadwayd $BROADWAY_DISPLAY -p $BROADWAY_PORT
+        component: broadwayd
+
+  - name: play vibbles
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/vibbles'
+        type: exec
+        command: ./main
+        component: broadwayd
