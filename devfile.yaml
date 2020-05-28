@@ -7,7 +7,7 @@ attributes:
 
 projects:
 
-- name: vibbles
+  - name: vibbles
     source:
       location: 'https://github.com/egee-irl/vibbles.git'
       type: git
@@ -16,7 +16,7 @@ projects:
 
 components:
 
-- mountSources: true
+  - mountSources: true
     endpoints:
       - name: 5000-tcp
         port: 5000
@@ -28,7 +28,7 @@ components:
     image: quay.io/sunix/broadwayd
     alias: broadwayd
 
-- type: chePlugin
+  - type: chePlugin
     reference: >-
       https://github.com/sunix/vala-language-server-container/raw/master/che-plugin/meta.yaml
     alias: valalang
